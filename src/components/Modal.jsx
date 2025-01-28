@@ -1,17 +1,9 @@
 import React from 'react';
 import Button from './Button';
+import { formatCurrency, calculateCartTotals } from '../utils';
 
 const Modal = React.forwardRef(({ cartItems, setCartItems }, ref) => {
-  let usDollar = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  });
-
-  let orderTotal = 0;
-
-  cartItems.forEach((item) => {
-    orderTotal += item.quantity * item.price;
-  });
+  const { _, orderTotal } = calculateCartTotals(cartItems);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -53,11 +45,11 @@ const Modal = React.forwardRef(({ cartItems, setCartItems }, ref) => {
                         </h3>
                         <div className="flex items-center gap-100">
                           <p className="text-red font-semibold">{`${item.quantity}x`}</p>
-                          <p>{`@ ${usDollar.format(item.price)}`}</p>
+                          <p>{`@ ${formatCurrency(item.price)}`}</p>
                         </div>
                       </div>
                     </div>
-                    <p>{usDollar.format(item.price * item.quantity)}</p>
+                    <p>{formatCurrency(item.price * item.quantity)}</p>
                   </li>
                   {cartItems.length - 1 !== index && (
                     <hr className="my-200 border-t-rose-100" />
@@ -69,7 +61,7 @@ const Modal = React.forwardRef(({ cartItems, setCartItems }, ref) => {
             <div className="flex items-center justify-between gap-100">
               <p className="text-300 text-rose-900">Order Total</p>
               <output className="text-600 font-bold text-rose-900">
-                {usDollar.format(orderTotal)}
+                {formatCurrency(orderTotal)}
               </output>
             </div>
           </div>

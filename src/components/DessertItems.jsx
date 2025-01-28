@@ -1,13 +1,9 @@
 import React from 'react';
 import AddToCart from './AddToCart';
 import data from '../data/data.json';
+import { formatCurrency } from '../utils';
 
 function DessertItems({ cartItems, setCartItems }) {
-  let usDollar = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  });
-
   return (
     <ul className="grid gap-y-200 md:grid-cols-3 md:gap-x-300">
       {data.map((item, index) => {
@@ -41,7 +37,7 @@ function DessertItems({ cartItems, setCartItems }) {
               <h2 className="text-400 font-semibold text-rose-900">
                 {item.name}
               </h2>
-              <p className="text-400 text-red font-semibold">{`${usDollar.format(item.price)}`}</p>
+              <p className="text-400 text-red font-semibold">{`${formatCurrency(item.price)}`}</p>
             </div>
           </li>
         );

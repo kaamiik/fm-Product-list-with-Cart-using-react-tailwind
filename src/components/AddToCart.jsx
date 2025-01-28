@@ -87,6 +87,7 @@ function AddToCart({ item, cartItems, setCartItems }) {
           </defs>
         </svg>
         <span>Add to Cart</span>
+        <span className="sr-only">{item.name}</span>
       </button>
     );
 
