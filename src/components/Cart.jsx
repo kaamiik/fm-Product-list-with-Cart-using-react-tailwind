@@ -16,7 +16,7 @@ function Cart({ cartItems, setCartItems, modalRef }) {
   }
 
   return (
-    <div>
+    <div className="text-300">
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {numOfItems > 0
           ? cartItems.map((item) => (
@@ -37,7 +37,7 @@ function Cart({ cartItems, setCartItems, modalRef }) {
               src="./assets/images/illustration-empty-cart.svg"
               alt=""
             />
-            <p className="text-300 text-center font-semibold text-rose-500">
+            <p className="text-center font-semibold text-rose-500">
               Your added items will appear here
             </p>
           </div>
@@ -52,7 +52,7 @@ function Cart({ cartItems, setCartItems, modalRef }) {
             {cartItems.map((item, index) => (
               <React.Fragment key={item.name}>
                 <li className="flex items-center justify-between gap-100">
-                  <div className="text-300 flex flex-col gap-100">
+                  <div className="flex flex-col gap-100">
                     <h3 className="font-semibold text-rose-900">{item.name}</h3>
                     <div className="flex items-center gap-100">
                       <p className="text-red font-semibold">{`${item.quantity}x`}</p>

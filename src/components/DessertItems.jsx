@@ -30,14 +30,12 @@ function DessertItems({ cartItems, setCartItems }) {
                 />
               </div>
             </div>
-            <div className="flex flex-col gap-50">
+            <div className="text-400 flex flex-col gap-50">
               <p className="text-300 font-normal text-rose-500">
                 {item.category}
               </p>
-              <h2 className="text-400 font-semibold text-rose-900">
-                {item.name}
-              </h2>
-              <p className="text-400 text-red font-semibold">{`${formatCurrency(item.price)}`}</p>
+              <h2 className="font-semibold text-rose-900">{item.name}</h2>
+              <p className="text-red font-semibold">{`${formatCurrency(item.price)}`}</p>
             </div>
           </li>
         );

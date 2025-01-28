@@ -61,7 +61,7 @@ function AddToCart({ item, cartItems, setCartItems }) {
       <button
         onClick={handleInitialClick}
         type="button"
-        className="hover:border-red hover:text-red group focus-visible:border-red focus-visible:text-red focus-visible:outline-green ease-in-ou flex w-fit cursor-pointer items-center gap-100 rounded-full border border-rose-400 bg-white px-[1.75em] py-[0.75em] text-rose-900 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4"
+        className="hover:border-red hover:text-red group focus-visible:border-red focus-visible:text-red focus-visible:outline-green flex w-fit cursor-pointer items-center gap-100 rounded-full border border-rose-400 bg-white px-[1.75em] py-[0.75em] text-rose-900 transition-colors duration-300 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-4"
       >
         <svg
           aria-hidden="true"

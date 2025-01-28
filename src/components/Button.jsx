@@ -24,7 +24,7 @@ function Button({ type, onClick, children }) {
             className="transition-colors duration-300 ease-in-out group-hover:fill-black group-focus-visible:fill-black"
           />
         </svg>
-        <span className="sr-only">{`${type} icon button`}</span>
+        <span className="sr-only">{`${type} icon`}</span>
       </button>
     );
 
