@@ -5,21 +5,21 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('./assets/fonts/static/RedHatText-Regular.ttf') format('truetype');
+  src: url('/assets/fonts/static/RedHatText-Regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Red Hat Text';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('./assets/fonts/static/RedHatText-SemiBold.ttf') format('truetype');
+  src: url('/assets/fonts/static/RedHatText-SemiBold.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Red Hat Text';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('./assets/fonts/static/RedHatText-Bold.ttf') format('truetype');
+  src: url('/assets/fonts/static/RedHatText-Bold.ttf') format('truetype');
 }
 
 @theme {

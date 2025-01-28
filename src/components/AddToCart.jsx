@@ -95,7 +95,7 @@ function AddToCart({ item, cartItems, setCartItems }) {
       <Label className="sr-only">Number of Items</Label>
       <Group className="data-focus-visible:outline-green bg-red flex w-fit items-center rounded-full p-150 data-focus-visible:outline-2 data-focus-visible:outline-offset-4">
         <AriaButton
-          className="group w-fit cursor-pointer rounded-full border border-white p-50 transition-colors duration-300 ease-in-out hover:bg-white"
+          className="group w-fit cursor-pointer rounded-full border border-white p-50 transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white"
           slot="decrement"
         >
           <svg
@@ -120,7 +120,7 @@ function AddToCart({ item, cartItems, setCartItems }) {
           className="text-300 max-w-[6.15rem] text-center font-bold text-white outline-none"
         />
         <AriaButton
-          className="group w-fit cursor-pointer rounded-full border border-white p-50 transition-colors duration-300 ease-in-out hover:bg-white"
+          className="group w-fit cursor-pointer rounded-full border border-white p-50 transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white"
           slot="increment"
         >
           <svg
