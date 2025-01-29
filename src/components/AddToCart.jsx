@@ -28,32 +28,63 @@ function AddToCart({ item, cartItems, setCartItems }) {
     setCartItems(updatedCartItems);
   }
 
+  // function handleQuantityChange(value) {
+  //   const sanitizedValue = value || 0;
+  //   setQuantity(sanitizedValue);
+  //   let updatedCartItems;
+
+  //   if (sanitizedValue === 0) {
+  //     setAdded(false);
+  //     updatedCartItems = cartItems.filter(
+  //       (cartItem) => cartItem.name !== item.name
+  //     );
+  //   } else {
+  //     const itemIndex = cartItems.findIndex(
+  //       (cartItem) => cartItem.name === item.name
+  //     );
+  //     if (itemIndex > -1) {
+  //       cartItems[itemIndex].quantity = sanitizedValue;
+  //       updatedCartItems = [...cartItems];
+  //     } else {
+  //       updatedCartItems = [
+  //         ...cartItems,
+  //         { ...item, quantity: sanitizedValue },
+  //       ];
+  //     }
+  //   }
+
+  //   setCartItems(updatedCartItems);
+  // }
+
   function handleQuantityChange(value) {
     const sanitizedValue = value || 0;
     setQuantity(sanitizedValue);
+
     let updatedCartItems;
 
     if (sanitizedValue === 0) {
-      setAdded(false);
-      updatedCartItems = cartItems.filter(
-        (cartItem) => cartItem.name !== item.name
-      );
+      setTimeout(() => {
+        setAdded(false);
+        setCartItems((prevCartItems) =>
+          prevCartItems.filter((cartItem) => cartItem.name !== item.name)
+        );
+      }, 100); // Small delay to allow smooth re-render
     } else {
       const itemIndex = cartItems.findIndex(
         (cartItem) => cartItem.name === item.name
       );
       if (itemIndex > -1) {
-        cartItems[itemIndex].quantity = sanitizedValue;
-        updatedCartItems = [...cartItems];
+        const newCartItems = [...cartItems];
+        newCartItems[itemIndex].quantity = sanitizedValue;
+        updatedCartItems = newCartItems;
       } else {
         updatedCartItems = [
           ...cartItems,
           { ...item, quantity: sanitizedValue },
         ];
       }
+      setCartItems(updatedCartItems);
     }
-
-    setCartItems(updatedCartItems);
   }
 
   if (!added)
@@ -61,7 +92,7 @@ function AddToCart({ item, cartItems, setCartItems }) {
       <button
         onClick={handleInitialClick}
         type="button"
-        className="hover:border-red hover:text-red group focus-visible:border-red focus-visible:text-red focus-visible:outline-green relative z-10 flex w-fit cursor-pointer items-center gap-100 rounded-full border border-rose-400 bg-white px-[1.75em] py-[0.75em] text-rose-900 transition-colors duration-300 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-4"
+        className="hover:border-red hover:text-red group focus-visible:border-red focus-visible:text-red focus-visible:outline-green flex w-fit cursor-pointer items-center gap-100 rounded-full border border-rose-400 bg-white px-[1.75em] py-[0.75em] text-rose-900 transition-colors duration-300 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-4"
       >
         <svg
           aria-hidden="true"
@@ -96,7 +127,7 @@ function AddToCart({ item, cartItems, setCartItems }) {
       <Label className="sr-only">Number of Items</Label>
       <Group className="data-focus-visible:outline-green bg-red flex w-fit items-center rounded-full p-150 data-focus-visible:outline-2 data-focus-visible:outline-offset-4">
         <AriaButton
-          className="group relative z-10 w-fit cursor-pointer rounded-full border border-white p-50 transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white"
+          className="group w-fit cursor-pointer rounded-full border border-white p-50 transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white"
           slot="decrement"
         >
           <svg
@@ -121,7 +152,7 @@ function AddToCart({ item, cartItems, setCartItems }) {
           className="text-300 max-w-[6.15rem] text-center font-bold text-white outline-none"
         />
         <AriaButton
-          className="group relative z-10 w-fit cursor-pointer rounded-full border border-white p-50 transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white"
+          className="group w-fit cursor-pointer rounded-full border border-white p-50 transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white"
           slot="increment"
         >
           <svg
