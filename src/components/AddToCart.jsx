@@ -28,63 +28,32 @@ function AddToCart({ item, cartItems, setCartItems }) {
     setCartItems(updatedCartItems);
   }
 
-  // function handleQuantityChange(value) {
-  //   const sanitizedValue = value || 0;
-  //   setQuantity(sanitizedValue);
-  //   let updatedCartItems;
-
-  //   if (sanitizedValue === 0) {
-  //     setAdded(false);
-  //     updatedCartItems = cartItems.filter(
-  //       (cartItem) => cartItem.name !== item.name
-  //     );
-  //   } else {
-  //     const itemIndex = cartItems.findIndex(
-  //       (cartItem) => cartItem.name === item.name
-  //     );
-  //     if (itemIndex > -1) {
-  //       cartItems[itemIndex].quantity = sanitizedValue;
-  //       updatedCartItems = [...cartItems];
-  //     } else {
-  //       updatedCartItems = [
-  //         ...cartItems,
-  //         { ...item, quantity: sanitizedValue },
-  //       ];
-  //     }
-  //   }
-
-  //   setCartItems(updatedCartItems);
-  // }
-
   function handleQuantityChange(value) {
     const sanitizedValue = value || 0;
     setQuantity(sanitizedValue);
-
     let updatedCartItems;
 
     if (sanitizedValue === 0) {
-      setTimeout(() => {
-        setAdded(false);
-        setCartItems((prevCartItems) =>
-          prevCartItems.filter((cartItem) => cartItem.name !== item.name)
-        );
-      }, 100); // Small delay to allow smooth re-render
+      setAdded(false);
+      updatedCartItems = cartItems.filter(
+        (cartItem) => cartItem.name !== item.name
+      );
     } else {
       const itemIndex = cartItems.findIndex(
         (cartItem) => cartItem.name === item.name
       );
       if (itemIndex > -1) {
-        const newCartItems = [...cartItems];
-        newCartItems[itemIndex].quantity = sanitizedValue;
-        updatedCartItems = newCartItems;
+        cartItems[itemIndex].quantity = sanitizedValue;
+        updatedCartItems = [...cartItems];
       } else {
         updatedCartItems = [
           ...cartItems,
           { ...item, quantity: sanitizedValue },
         ];
       }
-      setCartItems(updatedCartItems);
     }
+
+    setCartItems(updatedCartItems);
   }
 
   if (!added)
@@ -127,7 +96,7 @@ function AddToCart({ item, cartItems, setCartItems }) {
       <Label className="sr-only">Number of Items</Label>
       <Group className="data-focus-visible:outline-green bg-red flex w-fit items-center rounded-full p-150 data-focus-visible:outline-2 data-focus-visible:outline-offset-4">
         <AriaButton
-          className="group w-fit cursor-pointer rounded-full border border-white p-50 transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white"
+          className="group w-fit cursor-pointer touch-none rounded-full border border-white p-50 transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white"
           slot="decrement"
         >
           <svg
