@@ -1,0 +1,77 @@
+<svg viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="900" height="700" fill="#f8f9fa"/>
+    
+    <!-- Components -->
+    <!-- App -->
+    <rect x="350" y="30" width="200" height="60" rx="10" fill="#f8d7da" stroke="#721c24" stroke-width="2"/>
+    <text x="450" y="55" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">App</text>
+    <text x="450" y="75" text-anchor="middle" font-family="Arial" font-size="12">Layout Container</text>
+    
+    <!-- Main -->
+    <rect x="250" y="140" width="200" height="100" rx="10" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+    <text x="350" y="165" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Main</text>
+    <text x="350" y="185" text-anchor="middle" font-family="Arial" font-size="12">State:</text>
+    <text x="350" y="205" text-anchor="middle" font-family="Arial" font-size="12">cartItems: []</text>
+    <text x="350" y="225" text-anchor="middle" font-family="Arial" font-size="12">modalRef: useRef</text>
+
+    <!-- Footer -->
+    <rect x="500" y="140" width="200" height="60" rx="10" fill="#d1ecf1" stroke="#0c5460" stroke-width="2"/>
+    <text x="600" y="165" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Footer</text>
+    <text x="600" y="185" text-anchor="middle" font-family="Arial" font-size="12">No props or state</text>
+    
+    <!-- DessertItems -->
+    <rect x="50" y="290" width="200" height="80" rx="10" fill="#d4edda" stroke="#155724" stroke-width="2"/>
+    <text x="150" y="315" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">DessertItems</text>
+    <text x="150" y="335" text-anchor="middle" font-family="Arial" font-size="12">Props:</text>
+    <text x="150" y="355" text-anchor="middle" font-family="Arial" font-size="12">cartItems, setCartItems</text>
+    
+    <!-- Cart -->
+    <rect x="300" y="290" width="200" height="80" rx="10" fill="#cce5ff" stroke="#004085" stroke-width="2"/>
+    <text x="400" y="315" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Cart</text>
+    <text x="400" y="335" text-anchor="middle" font-family="Arial" font-size="12">Props:</text>
+    <text x="400" y="355" text-anchor="middle" font-family="Arial" font-size="12">cartItems, setCartItems, modalRef</text>
+    
+    <!-- Modal -->
+    <rect x="550" y="290" width="200" height="80" rx="10" fill="#e2e3e5" stroke="#383d41" stroke-width="2"/>
+    <text x="650" y="315" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Modal</text>
+    <text x="650" y="335" text-anchor="middle" font-family="Arial" font-size="12">Props (forwardRef):</text>
+    <text x="650" y="355" text-anchor="middle" font-family="Arial" font-size="12">cartItems, setCartItems, ref</text>
+    
+    <!-- AddToCart -->
+    <rect x="50" y="420" width="200" height="100" rx="10" fill="#d4edda" stroke="#155724" stroke-width="2"/>
+    <text x="150" y="445" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">AddToCart</text>
+    <text x="150" y="465" text-anchor="middle" font-family="Arial" font-size="12">Props: item, cartItems, setCartItems</text>
+    <text x="150" y="485" text-anchor="middle" font-family="Arial" font-size="12">State:</text>
+    <text x="150" y="505" text-anchor="middle" font-family="Arial" font-size="12">added: boolean, quantity: number</text>
+    
+    <!-- Arrows -->
+    <!-- App to Main and Footer -->
+    <path d="M 450 90 L 350 140" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M 450 90 L 600 140" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Main to children -->
+    <path d="M 350 240 L 150 290" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M 350 240 L 400 290" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M 350 240 L 650 290" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- DessertItems to AddToCart -->
+    <path d="M 150 370 L 150 420" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+    </defs>
+    
+    <!-- Legend -->
+    <rect x="50" y="580" width="250" height="100" rx="5" fill="#fff" stroke="#333" stroke-width="1"/>
+    <text x="175" y="600" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Legend</text>
+    
+    <rect x="70" y="610" width="20" height="20" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+    <text x="100" y="625" font-family="Arial" font-size="12" x-anchor="start">Component with State</text>
+    
+    <rect x="70" y="640" width="20" height="20" fill="#d4edda" stroke="#155724" stroke-width="2"/>
+    <text x="100" y="655" font-family="Arial" font-size="12" x-anchor="start">Component with Props</text>
+</svg>

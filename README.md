@@ -33,6 +33,10 @@ Users should be able to:
 
 ![](./screenshot.jpeg)
 
+### Diagram
+
+![](./react-architecture-detailed.svg)
+
 ### Links
 
 - Solution URL: [GitHub](https://github.com/kaamiik/fm-Product-list-with-Cart-using-react-tailwind)
