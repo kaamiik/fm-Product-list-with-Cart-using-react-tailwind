@@ -7,59 +7,17 @@ import {
   Button as AriaButton,
 } from 'react-aria-components';
 
-function AddToCart({ item, cartItems, setCartItems }) {
-  const [added, setAdded] = React.useState(false);
-  const [quantity, setQuantity] = React.useState(0);
-
-  React.useEffect(() => {
-    const isItemInCart = cartItems.some(
-      (cartItem) => cartItem.name === item.name
-    );
-    if (!isItemInCart) {
-      setAdded(false);
-      setQuantity(0);
-    }
-  }, [cartItems]);
-
+function AddToCart({ currentQuantity, onQuantityChange }) {
   function handleInitialClick() {
-    setQuantity(1);
-    setAdded(true);
-    const updatedCartItems = [...cartItems, { ...item, quantity: 1 }];
-    setCartItems(updatedCartItems);
+    onQuantityChange(1);
   }
 
   function handleQuantityChange(value) {
     const sanitizedValue = value || 0;
-    setQuantity(sanitizedValue);
-
-    let updatedCartItems;
-
-    if (sanitizedValue === 0) {
-      setTimeout(() => {
-        setAdded(false);
-        setCartItems((prevCartItems) =>
-          prevCartItems.filter((cartItem) => cartItem.name !== item.name)
-        );
-      }, 100); // Small delay to allow smooth re-render
-    } else {
-      const itemIndex = cartItems.findIndex(
-        (cartItem) => cartItem.name === item.name
-      );
-      if (itemIndex > -1) {
-        const newCartItems = [...cartItems];
-        newCartItems[itemIndex].quantity = sanitizedValue;
-        updatedCartItems = newCartItems;
-      } else {
-        updatedCartItems = [
-          ...cartItems,
-          { ...item, quantity: sanitizedValue },
-        ];
-      }
-      setCartItems(updatedCartItems);
-    }
+    onQuantityChange(sanitizedValue);
   }
 
-  if (!added)
+  if (currentQuantity === 0)
     return (
       <button
         onClick={handleInitialClick}
@@ -90,12 +48,15 @@ function AddToCart({ item, cartItems, setCartItems }) {
           </defs>
         </svg>
         <span className="font-semibold">Add to Cart</span>
-        <span className="sr-only">{item.name}</span>
       </button>
     );
 
   return (
-    <NumberField value={quantity} onChange={handleQuantityChange} minValue={0}>
+    <NumberField
+      value={currentQuantity}
+      onChange={handleQuantityChange}
+      minValue={0}
+    >
       <Label className="sr-only">Number of Items</Label>
       <Group className="data-focus-visible:outline-green bg-red flex w-fit items-center rounded-full p-150 data-focus-visible:outline-2 data-focus-visible:outline-offset-4">
         <AriaButton
@@ -119,10 +80,7 @@ function AddToCart({ item, cartItems, setCartItems }) {
             />
           </svg>
         </AriaButton>
-        <Input
-          // ref={inputRef}
-          className="text-300 max-w-[6.15rem] text-center font-bold text-white outline-none"
-        />
+        <Input className="text-300 max-w-[6.15rem] text-center font-bold text-white outline-none" />
         <AriaButton
           className="group w-fit cursor-pointer rounded-full border border-white p-50 transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white"
           slot="increment"

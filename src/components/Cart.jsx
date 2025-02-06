@@ -1,20 +1,14 @@
 import React from 'react';
 import Button from './Button';
-import { formatCurrency, calculateCartTotals } from '../utils';
+import { formatCurrency } from '../utils';
 
-function Cart({ cartItems, setCartItems, modalRef }) {
-  const { numOfItems, orderTotal } = calculateCartTotals(cartItems);
-
-  function handleRemoveItem(name) {
-    const updatedCartItems = cartItems.filter((item) => item.name !== name);
-    setCartItems(updatedCartItems);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    modalRef.current.showModal();
-  }
-
+function Cart({
+  cartItems,
+  numOfItems,
+  orderTotal,
+  onRemoveItem,
+  onOpenModal,
+}) {
   return (
     <div className="text-300">
       <div className="sr-only" aria-live="polite" aria-atomic="true">
@@ -44,7 +38,10 @@ function Cart({ cartItems, setCartItems, modalRef }) {
         </div>
       ) : (
         <form
-          onSubmit={handleSubmit}
+          onSubmit={(e) => {
+            e.preventDefault();
+            onOpenModal();
+          }}
           className="flex flex-col gap-300 rounded-xl bg-white p-300 lg:self-start"
         >
           <h2 className="text-red text-600 font-bold">{`Your Cart (${numOfItems})`}</h2>
@@ -63,7 +60,7 @@ function Cart({ cartItems, setCartItems, modalRef }) {
                     </div>
                   </div>
                   <Button
-                    onClick={() => handleRemoveItem(item.name)}
+                    onClick={() => onRemoveItem(item.name)}
                     type="remove"
                   />
                 </li>

@@ -3,13 +3,15 @@ import AddToCart from './AddToCart';
 import data from '../data/data.json';
 import { formatCurrency } from '../utils';
 
-function DessertItems({ cartItems, setCartItems }) {
+function DessertItems({ cartItems, onQuantityChange }) {
   return (
     <ul className="grid gap-y-200 md:grid-cols-3 md:gap-x-300">
       {data.map((item, index) => {
-        const isInCart = cartItems.some(
+        const cartItem = cartItems.find(
           (cartItem) => cartItem.name === item.name
         );
+        const currentQuantity = cartItem?.quantity || 0;
+        const isInCart = currentQuantity > 0;
         return (
           <li key={index} className="flex flex-col gap-200">
             <div className="grid grid-rows-(--image-grid-rows)">
@@ -24,10 +26,12 @@ function DessertItems({ cartItems, setCartItems }) {
               </picture>
               <div className="col-start-1 row-span-2 row-start-2 self-center justify-self-center">
                 <AddToCart
-                  item={item}
-                  cartItems={cartItems}
-                  setCartItems={setCartItems}
+                  currentQuantity={currentQuantity}
+                  onQuantityChange={(newQuantity) =>
+                    onQuantityChange(item, newQuantity)
+                  }
                 />
+                <span className="sr-only">{item.name}</span>
               </div>
             </div>
             <div className="text-400 flex flex-col gap-50">
