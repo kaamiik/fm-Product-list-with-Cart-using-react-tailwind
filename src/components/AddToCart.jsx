@@ -89,7 +89,7 @@ function AddToCart({ currentQuantity, onQuantityChange }) {
             <path
               fill="#fff"
               d="M0 .375h10v1.25H0V.375Z"
-              className="group-hover:fill-red group-focus:fill-red transition-colors duration-300 ease-in-out"
+              className="group-hover:fill-red group-focus-visible:fill-red transition-colors duration-300 ease-in-out"
             />
           </svg>
         </AriaButton>
@@ -112,7 +112,7 @@ function AddToCart({ currentQuantity, onQuantityChange }) {
             <path
               fill="#fff"
               d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
-              className="group-hover:fill-red group-focus:fill-red transition-colors duration-300 ease-in-out"
+              className="group-hover:fill-red group-focus-visible:fill-red transition-colors duration-300 ease-in-out"
             />
           </svg>
         </AriaButton>
