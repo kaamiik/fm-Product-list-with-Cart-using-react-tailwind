@@ -68,6 +68,7 @@ function AddToCart({ currentQuantity, onQuantityChange }) {
       value={currentQuantity}
       onChange={handleQuantityChange}
       minValue={0}
+      step={1}
     >
       <Label className="sr-only">Number of Items</Label>
       <Group className="data-focus-visible:outline-green bg-red flex w-fit items-center rounded-full p-150 data-focus-visible:outline-2 data-focus-visible:outline-offset-4">
