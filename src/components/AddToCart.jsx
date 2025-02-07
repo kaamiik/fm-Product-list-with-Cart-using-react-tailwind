@@ -28,10 +28,6 @@ function AddToCart({ currentQuantity, onQuantityChange }) {
     }
   }
 
-  const handleIncrement = () => handleQuantityChange(currentQuantity + 1);
-  const handleDecrement = () =>
-    handleQuantityChange(Math.max(0, currentQuantity - 1));
-
   if (currentQuantity === 0) {
     return (
       <button
@@ -68,12 +64,15 @@ function AddToCart({ currentQuantity, onQuantityChange }) {
   }
 
   return (
-    <NumberField value={currentQuantity} minValue={0}>
+    <NumberField
+      value={currentQuantity}
+      onChange={handleQuantityChange}
+      minValue={0}
+    >
       <Label className="sr-only">Number of Items</Label>
       <Group className="data-focus-visible:outline-green bg-red flex w-fit items-center rounded-full p-150 data-focus-visible:outline-2 data-focus-visible:outline-offset-4">
         <AriaButton
           slot="decrement"
-          onPress={handleDecrement}
           className="group w-fit cursor-pointer rounded-full border border-white p-50 transition-colors duration-300 ease-in-out hover:bg-white focus-visible:bg-white"
         >
           <svg
@@ -96,7 +95,6 @@ function AddToCart({ currentQuantity, onQuantityChange }) {
         <Input className="text-300 max-w-[6.15rem] text-center font-bold text-white outline-none" />
         <AriaButton
           slot="increment"
-          onPress={handleIncrement}
           className="group w-fit cursor-pointer rounded-full border border-white p-50 transition-colors duration-300 ease-in-out hover:bg-white focus-visible:bg-white"
         >
           <svg
