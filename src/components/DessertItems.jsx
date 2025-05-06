@@ -3,7 +3,11 @@ import AddToCart from './AddToCart';
 import data from '../data/data.json';
 import { formatCurrency } from '../utils';
 
-function DessertItems({ cartItems, onQuantityChange }) {
+import { CartItemsContext } from './CartItemsProvider';
+
+function DessertItems({}) {
+  const { cartItems } = React.useContext(CartItemsContext);
+
   return (
     <ul className="grid gap-y-200 md:grid-cols-3 md:gap-x-300">
       {data.map((item, index) => {
@@ -25,12 +29,7 @@ function DessertItems({ cartItems, onQuantityChange }) {
                 />
               </picture>
               <div className="col-start-1 row-span-2 row-start-2 self-center justify-self-center">
-                <AddToCart
-                  currentQuantity={currentQuantity}
-                  onQuantityChange={(newQuantity) =>
-                    onQuantityChange(item, newQuantity)
-                  }
-                />
+                <AddToCart currentQuantity={currentQuantity} item={item} />
                 <span className="sr-only">{item.name}</span>
               </div>
             </div>

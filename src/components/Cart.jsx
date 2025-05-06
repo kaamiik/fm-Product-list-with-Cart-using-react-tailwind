@@ -2,13 +2,13 @@ import React from 'react';
 import Button from './Button';
 import { formatCurrency } from '../utils';
 
-function Cart({
-  cartItems,
-  numOfItems,
-  orderTotal,
-  onRemoveItem,
-  onOpenModal,
-}) {
+import { CartItemsContext } from './CartItemsProvider';
+import { ModalRefContext } from './ModalRefProvider';
+
+function Cart() {
+  const { cartItems, numOfItems, orderTotal, handleRemoveItem } =
+    React.useContext(CartItemsContext);
+  const { modalRef } = React.useContext(ModalRefContext);
   return (
     <div className="text-300">
       <div className="sr-only" aria-live="polite" aria-atomic="true">
@@ -40,7 +40,7 @@ function Cart({
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            onOpenModal();
+            modalRef.current.showModal();
           }}
           className="flex flex-col gap-300 rounded-xl bg-white p-300 lg:self-start"
         >
@@ -60,7 +60,7 @@ function Cart({
                     </div>
                   </div>
                   <Button
-                    onClick={() => onRemoveItem(item.name)}
+                    onClick={() => handleRemoveItem(item.name)}
                     type="remove"
                   />
                 </li>

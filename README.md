@@ -11,7 +11,6 @@ This is a solution to the [Product list with cart challenge on Frontend Mentor](
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
@@ -33,10 +32,6 @@ Users should be able to:
 
 ![](./screenshot.jpeg)
 
-### Diagram
-
-![](./react-architecture-detailed.svg)
-
 ### Links
 
 - Solution URL: [GitHub](https://github.com/kaamiik/fm-Product-list-with-Cart-using-react-tailwind)
@@ -57,7 +52,7 @@ Users should be able to:
 
 ### What I learned
 
-In this project, I learned about state management using the `useState` hook in React, as well as how to utilize `useEffect` for handling side effects in functional components. I also explored the implementation of `forwardRef` for managing component references. Additionally, I focused on creating different components and practicing prop delegation to enhance reusability. I used prop drilling for state management in this project, but I plan to use the Context API for more efficient state management in future projects. To improve accessibility, I added a `div` with the `sr-only` class to provide aria-live announcements for screen readers when items are added or removed. Furthermore, I used Tailwind v4 for this project, which does not require a `tailwind.config.js` file, and I utilized the `@theme` directive along with custom properties to add custom styles.
+In this project, I learned about state management using the React Context API, which allowed me to efficiently manage and share state across components without prop drilling. I implemented multiple context providers for both cart state and modal ref management, demonstrating how to create and consume context in a React application. I also explored the use of `useRef` for managing component references. To improve accessibility, I added a `div` with the `sr-only` class to provide aria-live announcements for screen readers when items are added or removed. Furthermore, I used Tailwind v4 for this project, which does not require a `tailwind.config.js` file, and I utilized the `@theme` directive along with custom properties to add custom styles.
 
 ## Author
 

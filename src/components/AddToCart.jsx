@@ -7,7 +7,11 @@ import {
   Button as AriaButton,
 } from 'react-aria-components';
 
-function AddToCart({ currentQuantity, onQuantityChange }) {
+import { CartItemsContext } from './CartItemsProvider';
+
+function AddToCart({ currentQuantity, item }) {
+  const { handleQuantityChange: contextHandleQuantityChange } =
+    React.useContext(CartItemsContext);
   const timeoutRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -21,10 +25,10 @@ function AddToCart({ currentQuantity, onQuantityChange }) {
 
     if (sanitizedValue === 0) {
       timeoutRef.current = setTimeout(() => {
-        onQuantityChange(0);
+        contextHandleQuantityChange(item, 0);
       }, 100);
     } else {
-      onQuantityChange(sanitizedValue);
+      contextHandleQuantityChange(item, sanitizedValue);
     }
   }
 
